@@ -1,4 +1,11 @@
-preco = float(input("Digite o valor do produto:"))
-precoDesconto = preco * 0.9
+""""
+ Escreva um programa que receba o preço de um produto e calcule o seu preço final com um
+desconto de 10%.
+"""
 
-print(f"O valor com 10% de desconto é de {precoDesconto}")
+preco = float(input("Digite o valor do produto:"))
+
+desconto = preco * 10/100
+
+preco = preco - desconto
+print(f"O valor com 10% de desconto é de {preco}")

@@ -1,3 +1,8 @@
+'''
+ Faça um algoritmo que solicite N números e calcule a média dos números pares e a
+média dos números ímpares (o valor de N deve ser solicitado ao usuário no início do
+programa).
+'''
 
 n = int(input("Quantidade de números: "))
 

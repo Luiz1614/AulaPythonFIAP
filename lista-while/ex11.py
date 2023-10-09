@@ -1,3 +1,10 @@
+"""
+Escreva um programa que solicita ao usuário o valor de N e calcule o valor de 𝑆 na série
+abaixo:
+𝑆 =
+1/1 + 1/2 + 1/3 + ⋯ + 1/N
+"""
+
 n = int(input("valor de N: "))
 
 soma = 0

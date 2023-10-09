@@ -1,3 +1,6 @@
+#Escreva um algoritmo que solicite 10 números e informe quantos números entre 100 e
+#200 foram digitados.
+
 cont = 1
 resposta = 0
 

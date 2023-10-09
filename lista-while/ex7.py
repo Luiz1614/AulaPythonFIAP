@@ -1,3 +1,9 @@
+'''
+7. Solicite dois números diferentes ao usuário (caso os números sejam iguais, o algoritmo
+deve solicitar os números novamente) e informe a diferença entre o maior e o menor
+número.
+'''
+
 numero1 = 0
 numero2 = 0
 

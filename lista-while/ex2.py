@@ -1,3 +1,5 @@
+#Escreva um algoritmo que solicite 10 números e exiba o dobro de cada número digitado.
+
 cont = 1
 
 while cont <= 10:

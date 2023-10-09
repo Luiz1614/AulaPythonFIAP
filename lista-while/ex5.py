@@ -1,3 +1,8 @@
+'''
+Escreva um algoritmo que solicite 15 números e informe o somatório de todos os
+números ímpares digitados.
+'''
+
 cont = 1
 soma = 0
 

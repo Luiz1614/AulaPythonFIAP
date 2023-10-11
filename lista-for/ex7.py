@@ -3,7 +3,7 @@
 
 import random
 
-for i in range(1, 21):
-    num = random.randrange(1, 51)
+for i in range(20):
+    num = random.randint(1,50)
     print(num)
 

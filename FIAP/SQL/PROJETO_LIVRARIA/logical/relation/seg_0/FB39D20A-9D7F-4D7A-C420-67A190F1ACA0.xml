@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FAZ" directorySegmentName="seg_0" id="FB39D20A-9D7F-4D7A-C420-67A190F1ACA0">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-07 20:17:21 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<engineerTo>
+<item key="39510461-FFF8-6203-D426-8771BE2F1617" value="true"/>
+</engineerTo>
+<sourcePk>3D8E8EBA-2CF2-6495-986F-638E3F707060</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>EDBC1FE2-5DB1-286E-09C9-7B304BB27FF5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>049234D5-2E15-90E7-22B7-953DC95123DE</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

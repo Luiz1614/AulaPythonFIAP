@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F8A8A59E-0FC1-13A9-FB26-66657CA044DE" name="ITEM_PEDIDO">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-07 20:10:57 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<engineerTo>
+<item key="39510461-FFF8-6203-D426-8771BE2F1617" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="COD_PEDIDO" id="C4E88733-C407-EB0F-ED22-915ABB729A8D">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-07 20:11:28 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<engineerTo>
+<item key="39510461-FFF8-6203-D426-8771BE2F1617" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_LIVRO" id="F834465F-8907-0EA1-345C-6D6CC812FF4A">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-07 20:11:46 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<engineerTo>
+<item key="39510461-FFF8-6203-D426-8771BE2F1617" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="VALOR_PEDIDO" id="E75F03C7-3C33-51DE-AAE2-091CBE2D74CD">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-07 20:13:06 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<engineerTo>
+<item key="39510461-FFF8-6203-D426-8771BE2F1617" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="01EB98A5-EA90-C6B0-0E41-1CD36D73DAA8" name="ITEM_PEDIDO PK">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-07 20:11:29 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<engineerTo>
+<item key="39510461-FFF8-6203-D426-8771BE2F1617" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C4E88733-C407-EB0F-ED22-915ABB729A8D</attributeRef>
+<attributeRef>F834465F-8907-0EA1-345C-6D6CC812FF4A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

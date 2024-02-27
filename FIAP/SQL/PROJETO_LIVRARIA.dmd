@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="PROJETO_LIVRARIA" id="2C3B9765-914A-0632-FCAD-512263B0A62C" version="3.5">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-05 23:06:29 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>2C3B9765-914A-0632-FCAD-512263B0A62C</designId>
+</OSDM_Design>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_11" directorySegmentName="seg_0" id="38EBEC57-6E3D-C77F-DAB6-C4DDA4D24740">
+<createdBy>luizo</createdBy>
+<createdTime>2024-02-07 20:26:39 UTC</createdTime>
+<ownerDesignName>PROJETO_LIVRARIA</ownerDesignName>
+<engineerTo>
+<item key="39510461-FFF8-6203-D426-8771BE2F1617" value="true"/>
+</engineerTo>
+<sourcePk>79E9137C-4CD1-2512-CCDA-5CA88935A43E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>D97C0379-6B1B-A2CA-868F-F2275102153F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>6BE2295A-9AA6-614A-71A6-10AFC2225D9C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

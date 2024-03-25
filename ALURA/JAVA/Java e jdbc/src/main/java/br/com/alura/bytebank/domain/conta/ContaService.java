@@ -1,18 +1,27 @@
 package br.com.alura.bytebank.domain.conta;
 
+import br.com.alura.bytebank.ConnectionFactory;
 import br.com.alura.bytebank.domain.RegraDeNegocioException;
 import br.com.alura.bytebank.domain.cliente.Cliente;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ContaService {
-
     private Set<Conta> contas = new HashSet<>();
 
     public Set<Conta> listarContasAbertas() {
         return contas;
+    }
+
+    private ConnectionFactory connection;
+
+    public ContaService() {
+        this.connection = new ConnectionFactory();
     }
 
     public BigDecimal consultarSaldo(Integer numeroDaConta) {
@@ -27,7 +36,25 @@ public class ContaService {
             throw new RegraDeNegocioException("Já existe outra conta aberta com o mesmo número!");
         }
 
-        contas.add(conta);
+        try {
+            String sql = "INSERT INTO CONTA (NUMERO, SALDO, CLIENTE_NOME, CLIENTE_CPF, CLIENTE_EMAIL) VALUES (?, ?, ?, ?, ?)";
+            Connection conn = connection.recuperaConexao();
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setInt(1, conta.getNumero());
+            preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
+            preparedStatement.setString(3, dadosDaConta.dadosCliente().nome());
+            preparedStatement.setString(4, dadosDaConta.dadosCliente().cpf());
+            preparedStatement.setString(5, dadosDaConta.dadosCliente().email());
+
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao salvar a conta no banco de dados!");
+        }
+
+
     }
 
     public void realizarSaque(Integer numeroDaConta, BigDecimal valor) {

@@ -16,7 +16,15 @@ public class ContaRepository <T extends Conta> implements CrudRepository<Conta> 
 
     @Override
     public void create(Conta obj) {
-
+        try {
+            var conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            var st = conn.prepareStatement("INSERT INTO TB_CONTA (NUMERO_CONTA, SALDO) VALUES (?, ?)");
+            st.setString(1, obj.getNumero());
+            st.setFloat(2, obj.getSaldo());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -24,7 +32,7 @@ public class ContaRepository <T extends Conta> implements CrudRepository<Conta> 
         var contas = new ArrayList<Conta>();
 
         try {
-            var conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            var connection = DriverManager.getConnection(URL, USER, PASSWORD);
             var st = conn.prepareStatement("SELECT * FROM TB_CONTA");
             var resultSet = st.executeQuery();
 

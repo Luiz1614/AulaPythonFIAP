@@ -87,5 +87,16 @@ INSERT INTO TB_PRODUTOS (PRODUTO, NOME, EMBALAGEM, TAMANHO, SABOR, PRECO_LISTA) 
 
 
 
-SELECT * FROM TB_CLIENTES;
+SELECT * FROM tb_produtos where sabor = 'Citricos';
 SELECT PRODUTO AS "CODIGO DO PRODUTO" FROM TB_PRODUTOS;
+SELECT * FROM TB_PRODUTOS WHERE SABOR = 'Laranja';
+
+UPDATE tb_produtos SET SABOR = 'Citricos' WHERE SABOR = 'Limao';
+
+select * from tb_clientes where not idade!= 22;
+
+select * from tb_clientes where data_nascimento > to_date('25/03/1992', 'DD/MM/YYYY');
+
+select * from tb_produtos where preco_lista > 20.00 and tamanho != '1,5 Litros'; 
+
+select * from tb_clientes where (idade > 18 and sexo = 'F') and bairro = 'Lapa';

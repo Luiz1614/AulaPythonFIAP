@@ -1,0 +1,105 @@
+[
+  {
+    "nome": "Ricardo",
+    "endereco": "Rua 1",
+    "email": "Ricardo@gmail.com",
+    "historicoCompras": [
+      {
+        "itemVenda": [
+          {
+            "produto": {
+              "nome": "Produto 1",
+              "descricao": "Produto1",
+              "preco": 100.0,
+              "estoque": 10,
+              "id": 1
+            },
+            "quantidade": 5,
+            "id": 1
+          },
+          {
+            "produto": {
+              "nome": "Produto 2",
+              "descricao": "Produto2",
+              "preco": 200.0,
+              "estoque": 20,
+              "id": 2
+            },
+            "quantidade": 10,
+            "id": 2
+          }
+        ],
+        "data": "2024-03-14T16:12:14.0891884",
+        "valorTotal": 2500.0,
+        "id": 1
+      },
+      {
+        "itemVenda": [
+          {
+            "produto": {
+              "nome": "Produto 1",
+              "descricao": "Produto1",
+              "preco": 100.0,
+              "estoque": 10,
+              "id": 1
+            },
+            "quantidade": 5,
+            "id": 1
+          },
+          {
+            "produto": {
+              "nome": "Produto 3",
+              "descricao": "Produto3",
+              "preco": 300.0,
+              "estoque": 30,
+              "id": 3
+            },
+            "quantidade": 15,
+            "id": 3
+          }
+        ],
+        "data": "2024-03-14T16:12:14.0891884",
+        "valorTotal": 5000.0,
+        "id": 3
+      }
+    ],
+    "id": 1
+  },
+  {
+    "nome": "Julia",
+    "endereco": "Rua 2",
+    "email": "Julia@gmail.com",
+    "historicoCompras": [
+      {
+        "itemVenda": [
+          {
+            "produto": {
+              "nome": "Produto 2",
+              "descricao": "Produto2",
+              "preco": 200.0,
+              "estoque": 20,
+              "id": 2
+            },
+            "quantidade": 10,
+            "id": 2
+          },
+          {
+            "produto": {
+              "nome": "Produto 3",
+              "descricao": "Produto3",
+              "preco": 300.0,
+              "estoque": 30,
+              "id": 3
+            },
+            "quantidade": 15,
+            "id": 3
+          }
+        ],
+        "data": "2024-03-14T16:12:14.0891884",
+        "valorTotal": 6500.0,
+        "id": 2
+      }
+    ],
+    "id": 2
+  }
+]

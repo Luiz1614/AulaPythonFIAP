@@ -37,18 +37,18 @@ public class ContaService {
         }
 
         try {
-            String sql = "INSERT INTO CONTA (NUMERO, SALDO, CLIENTE_NOME, CLIENTE_CPF, CLIENTE_EMAIL) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO al_conta (numero, saldo, nome_cliente, cpf_cliente, email_cliente) VALUES (?, ?, ?, ?, ?)";
             Connection conn = connection.recuperaConexao();
 
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, conta.getNumero());
+            ps.setBigDecimal(2, conta.getSaldo());
+            ps.setString(3, cliente.getNome());
+            ps.setString(4, cliente.getCpf());
+            ps.setString(5, cliente.getEmail());
 
-            preparedStatement.setInt(1, conta.getNumero());
-            preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
-            preparedStatement.setString(3, dadosDaConta.dadosCliente().nome());
-            preparedStatement.setString(4, dadosDaConta.dadosCliente().cpf());
-            preparedStatement.setString(5, dadosDaConta.dadosCliente().email());
-
-            preparedStatement.execute();
+            ps.execute();
+            contas.add(conta);
 
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao salvar a conta no banco de dados!");

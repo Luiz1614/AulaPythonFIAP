@@ -1,0 +1,15 @@
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\bin\Debug\net8.0\Cadastro de Produtos.exe
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\bin\Debug\net8.0\Cadastro de Produtos.deps.json
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\bin\Debug\net8.0\Cadastro de Produtos.runtimeconfig.json
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\bin\Debug\net8.0\Cadastro de Produtos.dll
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\bin\Debug\net8.0\Cadastro de Produtos.pdb
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.AssemblyInfoInputs.cache
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.AssemblyInfo.cs
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.csproj.CoreCompileInputs.cache
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.sourcelink.json
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.dll
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\refint\Cadastro de Produtos.dll
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.pdb
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\Cadastro de Produtos.genruntimeconfig.cache
+C:\Users\luizo\OneDrive\Área de Trabalho\Fiap e Alura\ALURA\C#\Cadastro de Produtos\Cadastro de Produtos\obj\Debug\net8.0\ref\Cadastro de Produtos.dll

@@ -8,6 +8,7 @@ public abstract class _BaseEntity {
     public _BaseEntity(int id) {
         this.id = id;
     }
+    public _BaseEntity(){}
 
     public int getId() {
         return id;

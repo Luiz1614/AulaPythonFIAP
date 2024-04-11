@@ -1,6 +1,7 @@
 package org.example;
 
-import org.example.repositories.RepositoryOracle;
+import org.example.database.OracleConnection;
+import org.example.database.ProdutoDao;
 import org.example.service.Produto;
 
 import java.sql.DriverManager;
@@ -10,16 +11,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        var produto = new Produto(1, "Celular", 10.0, 10);
-        var produto2 = new Produto(2, "Notebook", 20.0, 20);
-        var produto3 = new Produto();
+        var novoProduto = new Produto();
 
         Scanner scanner = new Scanner(System.in);
         boolean continuar = true;
 
         while (continuar) {
-            System.out.println("Escolha uma opção:");
+            System.out.println("\r\nEscolha uma opção:");
             System.out.println("1. Adicionar um produto");
+            System.out.println("2. Listar produtos");
+            System.out.println("3. Atualizar um produto");
+            System.out.println("4. Deletar um produto");
             System.out.println("0. Sair");
             System.out.print("\r\nDigite a opção desejada: ");
 
@@ -27,7 +29,10 @@ public class Main {
 
             switch (opcao) {
                 case "1":
-                    produto3.adicionarProduto();
+                    novoProduto.adicionarProduto();
+                    break;
+                case "2":
+                    novoProduto.listarProdutos();
                     break;
                 case "0":
                     continuar = false;

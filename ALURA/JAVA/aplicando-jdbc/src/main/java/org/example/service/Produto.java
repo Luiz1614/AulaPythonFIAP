@@ -1,13 +1,15 @@
 package org.example.service;
 
-import org.example.repositories.RepositoryOracle;
+import org.example.database.OracleConnection;
+import org.example.database.ProdutoDao;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.StringJoiner;
 
-public class Produto  extends _BaseEntity{
+public class Produto extends _BaseEntity{
       private String nome;
       private double preco;
       private int quantidade;
@@ -19,9 +21,14 @@ public class Produto  extends _BaseEntity{
         this.preco = preco;
         this.quantidade = quantidade;
     }
-    public Produto(){
-        super(0);
+
+    public Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
     }
+
+    public Produto(){}
 
     public String getNome() {
         return nome;
@@ -50,11 +57,7 @@ public class Produto  extends _BaseEntity{
     public void adicionarProduto() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o ID do produto:");
-        int id = scanner.nextInt();
-
         System.out.println("Digite o nome do produto:");
-        scanner.nextLine(); // Consumir a quebra de linha restante
         String nome = scanner.nextLine();
 
         System.out.println("Digite o preço do produto:");
@@ -63,12 +66,12 @@ public class Produto  extends _BaseEntity{
         System.out.println("Digite a quantidade do produto:");
         int quantidade = scanner.nextInt();
 
-        Produto produto = new Produto(id, nome, preco, quantidade);
+        Produto produto = new Produto(nome, preco, quantidade);
 
         try {
-            var connection = DriverManager.getConnection("jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL", "RM553542", "290405");
-            var repositoryOracle = new RepositoryOracle(connection);
-            repositoryOracle.Create(produto);
+            var connection = OracleConnection.getConnection();
+            var produtoDao = new ProdutoDao();
+            produtoDao.create(produto);
             System.out.println("Produto adicionado com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao adicionar o produto.");
@@ -76,22 +79,18 @@ public class Produto  extends _BaseEntity{
         }
     }
 
-    public void removerProduto(){
-        var scanner = new Scanner(System.in);
-        System.out.println("Digite o ID do produto que deseja remover:");
-        int idDigitado = scanner.nextInt();
-        if (idDigitado == this.getId()){
-            try {
-                var connection = DriverManager.getConnection("jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL", "RM553542", "290405");
-                var repositoryOracle = new RepositoryOracle(connection);
-                repositoryOracle.Delete(this);
-                System.out.println("Produto removido com sucesso!");
-            } catch (SQLException e) {
-                System.out.println("Erro ao remover o produto.");
-                e.printStackTrace();
+    public void listarProdutos(){
+        try{
+            var connectio = OracleConnection.getConnection();
+            var produtoDao = new ProdutoDao();
+            Set<Produto> produtos = produtoDao.read();
+
+            for (Produto produto: produtos){
+                System.out.println(produto);
             }
-        } else {
-            System.out.println("ID do produto não encontrado.");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
         }
     }
 
@@ -99,9 +98,9 @@ public class Produto  extends _BaseEntity{
     @Override
     public String toString() {
         return new StringJoiner(", ", Produto.class.getSimpleName() + "[", "]")
-                .add("nome='" + nome + "'")
-                .add("preco=" + preco)
-                .add("quantidade=" + quantidade)
+                .add("Nome: " + nome)
+                .add("Valor Unitário: " + preco)
+                .add("Quantidade em Estoque: " + quantidade)
                 .toString();
     }
 }

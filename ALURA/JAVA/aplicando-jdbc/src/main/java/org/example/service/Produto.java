@@ -1,13 +1,10 @@
 package org.example.service;
 
 import org.example.database.OracleConnection;
-import org.example.database.ProdutoDao;
+import org.example.repositories.ProdutoRepository;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class Produto extends _BaseEntity{
       private String nome;
@@ -70,10 +67,13 @@ public class Produto extends _BaseEntity{
 
         try {
             var connection = OracleConnection.getConnection();
-            var produtoDao = new ProdutoDao();
+            var produtoDao = new ProdutoRepository();
             produtoDao.create(produto);
             System.out.println("Produto adicionado com sucesso!");
-        } catch (SQLException e) {
+
+            connection.close();
+        }
+        catch (SQLException e) {
             System.out.println("Erro ao adicionar o produto.");
             e.printStackTrace();
         }
@@ -81,13 +81,55 @@ public class Produto extends _BaseEntity{
 
     public void listarProdutos(){
         try{
-            var connectio = OracleConnection.getConnection();
-            var produtoDao = new ProdutoDao();
-            Set<Produto> produtos = produtoDao.read();
+            var connection = OracleConnection.getConnection();
+            var produtoDao = new ProdutoRepository();
+            List<Produto> produtos = produtoDao.read();
 
             for (Produto produto: produtos){
                 System.out.println(produto);
             }
+            connection.close();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void alterarValorProduto(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o ID do produto que deseja alterar: ");
+        int id = scanner.nextInt();
+
+        System.out.print("Digite o novo valor do produto: ");
+        float valor = scanner.nextFloat();
+
+        try{
+            var connection = OracleConnection.getConnection();
+            var produtoDao = new ProdutoRepository(connection);
+            produtoDao.update(id, valor);
+
+            System.out.println("Valor do produto alterado com sucesso!");
+        }
+        catch (SQLException e){
+            System.out.println("Erro ao atualizar o valor do produto.");
+            e.printStackTrace();
+        }
+    }
+
+    public void deletarProduto(){
+        var scanner = new Scanner(System.in);
+
+        System.out.println("Digite o ID da conta que deseja excluir: ");
+        Integer id  = scanner.nextInt();
+
+        try{
+            var connection = OracleConnection.getConnection();
+            var produtoRepository = new ProdutoRepository();
+            produtoRepository.delete(id);
+
+            System.out.println("Conta deletada com sucesso!");
+            connection.close();
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -98,6 +140,7 @@ public class Produto extends _BaseEntity{
     @Override
     public String toString() {
         return new StringJoiner(", ", Produto.class.getSimpleName() + "[", "]")
+                .add("ID: " + super.getId())
                 .add("Nome: " + nome)
                 .add("Valor Unitário: " + preco)
                 .add("Quantidade em Estoque: " + quantidade)

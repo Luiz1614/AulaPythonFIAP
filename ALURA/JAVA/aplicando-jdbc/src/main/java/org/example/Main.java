@@ -1,11 +1,7 @@
 package org.example;
 
-import org.example.database.OracleConnection;
-import org.example.database.ProdutoDao;
 import org.example.service.Produto;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -20,7 +16,7 @@ public class Main {
             System.out.println("\r\nEscolha uma opção:");
             System.out.println("1. Adicionar um produto");
             System.out.println("2. Listar produtos");
-            System.out.println("3. Atualizar um produto");
+            System.out.println("3. Atualizar o valor de um produto");
             System.out.println("4. Deletar um produto");
             System.out.println("0. Sair");
             System.out.print("\r\nDigite a opção desejada: ");
@@ -33,6 +29,12 @@ public class Main {
                     break;
                 case "2":
                     novoProduto.listarProdutos();
+                    break;
+                case "3":
+                    novoProduto.alterarValorProduto();
+                    break;
+                case "4":
+                    novoProduto.deletarProduto();
                     break;
                 case "0":
                     continuar = false;

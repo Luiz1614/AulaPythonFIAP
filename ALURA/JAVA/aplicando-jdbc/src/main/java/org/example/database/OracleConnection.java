@@ -12,9 +12,4 @@ public class OracleConnection {
     public static Connection getConnection() throws SQLException{
         return DriverManager.getConnection(url, user, password);
     }
-
-
-
-
-
 }

@@ -21,14 +21,23 @@ public class CardResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(Card card) {
+    public Response Create(Card card) {
         cardRepository.create(card);
         return Response.status(Response.Status.CREATED).build();
     }
 
+    @PUT
+    @Path("{cod_carta}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response Update(@PathParam("cod_carta") String cod_carta, Card card) {
+        cardRepository.update(cod_carta, card);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+
     @DELETE
     @Path("{cod_carta}")
-    public Response delete(@PathParam("cod_carta") String cod_carta) {
+    public Response Delete(@PathParam("cod_carta") String cod_carta) {
         cardRepository.delete(cod_carta);
         return Response.status(Response.Status.NO_CONTENT).build();
     }

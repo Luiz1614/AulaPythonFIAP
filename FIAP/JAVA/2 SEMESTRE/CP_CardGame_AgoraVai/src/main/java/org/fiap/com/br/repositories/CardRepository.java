@@ -123,10 +123,33 @@ public class CardRepository {
         return cards;
     }
 
+    public void update(String cod_carta, Card card) {
+        try (var conn = oracleDbConfiguration.getConnection()) {
+            var stmt = conn.prepareStatement("UPDATE " + TB_NAME + " SET NOME = ?, VELOCIDADE = ?, CILINDRADAS = ?, ZEROCEM = ?, POTENCIA = ?, COMPRIMENTO = ?, PESO = ?, IS_SUPERTRUNFO = ? WHERE COD_CARTA = ?");
+
+            stmt.setString(1, card.getNome());
+            stmt.setInt(2, card.getVelocidade());
+            stmt.setInt(3, card.getCilindradas());
+            stmt.setDouble(4, card.getZeroCem());
+            stmt.setInt(5, card.getPotencia());
+            stmt.setDouble(6, card.getComprimento());
+            stmt.setInt(7, card.getPeso());
+            stmt.setString(8, card.isSuperTrunfo() ? "1" : "0");
+            stmt.setString(9, cod_carta);
+
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void delete(String cod_carta) {
         try (var conn = oracleDbConfiguration.getConnection()) {
             var stmt = conn.prepareStatement("DELETE FROM " + TB_NAME + " WHERE COD_CARTA = ?");
             stmt.setString(1, cod_carta);
+
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {

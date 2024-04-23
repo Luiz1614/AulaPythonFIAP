@@ -19,9 +19,15 @@ public class CardRepository {
 
     OracleDbConfiguration oracleDbConfiguration = new OracleDbConfiguration();
 
-    public CardRepository() {
-        Initialize();
+    static {
+        new CardRepository().Initialize();
     }
+
+    public CardRepository() {
+      super();
+}
+
+
 
     public void Initialize() {
         try {
@@ -94,7 +100,7 @@ public class CardRepository {
     public List<Card> read() {
         List<Card> cards = new ArrayList<>();
         try (var conn = oracleDbConfiguration.getConnection()) {
-            var stmt = conn.prepareStatement("SELECT * FROM " + TB_NAME);
+            var stmt = conn.prepareStatement("SELECT * FROM " + TB_NAME + " ORDER BY COD_CARTA");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Card card = new Card();

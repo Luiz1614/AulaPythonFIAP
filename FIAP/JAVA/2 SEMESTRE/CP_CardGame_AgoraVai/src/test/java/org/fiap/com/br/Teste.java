@@ -29,8 +29,9 @@ public class Teste {
         cardRepository.create(card3);
         colecaoRepository.update(colecao.addCard(card3));
 
-        System.out.println(cardRepository.read());
         System.out.println(colecaoRepository.read());
+        System.out.println(cardRepository.read());
+
     }
 }
 

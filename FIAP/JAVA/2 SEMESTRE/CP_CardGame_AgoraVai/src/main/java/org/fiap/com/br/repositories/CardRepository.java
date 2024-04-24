@@ -2,10 +2,6 @@ package org.fiap.com.br.repositories;
 
 import org.fiap.com.br.connection.OracleDbConfiguration;
 import org.fiap.com.br.entities.Card;
-
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

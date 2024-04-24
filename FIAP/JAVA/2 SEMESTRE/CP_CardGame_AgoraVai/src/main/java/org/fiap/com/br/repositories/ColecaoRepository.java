@@ -28,7 +28,7 @@ public class ColecaoRepository {
     public List<Colecao> read(){
         List<Colecao> colecoes = new ArrayList<>();
         try (var conn = oracleDbConfiguration.getConnection()) {
-            var stmt = conn.prepareStatement("SELECT * FROM " + TB_NAME + " JOIN CP_CARD ON " + TB_NAME + ".COD_COLECAO = CP_CARD.COD_COLECAO ORDER BY " + TB_NAME + ".COD_COLECAO");
+            var stmt = conn.prepareStatement("SELECT * FROM CP_COLECAO JOIN CP_CARD ON CP_COLECAO.COD_COLECAO = CP_CARD.COD_COLECAO ORDER BY CP_CARD.COD_CARTA");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Colecao colecao = new Colecao();

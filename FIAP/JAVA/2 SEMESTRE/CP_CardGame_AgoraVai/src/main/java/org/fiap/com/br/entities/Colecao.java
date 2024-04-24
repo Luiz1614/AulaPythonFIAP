@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 public class Colecao {
     private int cod_colecao;
     private String nome;
-    private List<Card> cards;
+    private List<Card> cards = new ArrayList<>();
 
     public Colecao() {
     }

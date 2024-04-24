@@ -11,12 +11,13 @@ public class Card {
     private int potencia;
     private double comprimento;
     private int peso;
+    private int cod_colecao;
     private boolean isSuperTrunfo;
 
     public Card() {
     }
 
-    public Card(String cod_carta, String nome, int velocidade, int cilindradas, double zeroCem, int potencia, double comprimento, int peso, boolean isSuperTrunfo) {
+    public Card(String cod_carta, String nome, int velocidade, int cilindradas, double zeroCem, int potencia, double comprimento, int peso, int cod_colecao, boolean isSuperTrunfo) {
         this.cod_carta = cod_carta;
         this.nome = nome;
         this.velocidade = velocidade;
@@ -25,6 +26,7 @@ public class Card {
         this.potencia = potencia;
         this.comprimento = comprimento;
         this.peso = peso;
+        this.cod_colecao = cod_colecao;
         this.isSuperTrunfo = isSuperTrunfo;
     }
 
@@ -92,6 +94,14 @@ public class Card {
         this.peso = peso;
     }
 
+    public int getCod_colecao() {
+        return cod_colecao;
+    }
+
+    public void setCod_colecao(int cod_colecao) {
+        this.cod_colecao = cod_colecao;
+    }
+
     public boolean isSuperTrunfo() {
         return isSuperTrunfo;
     }
@@ -99,6 +109,8 @@ public class Card {
     public void setSuperTrunfo(boolean superTrunfo) {
         isSuperTrunfo = superTrunfo;
     }
+
+
 
     @Override
     public String toString() {
@@ -111,6 +123,7 @@ public class Card {
                 .add("Potencia: " + potencia)
                 .add("Comprimento: " + comprimento)
                 .add("Peso: " + peso)
+                .add("Colecao: " + cod_colecao)
                 .add("Super Trunfo: " + isSuperTrunfo)
                 .toString();
     }

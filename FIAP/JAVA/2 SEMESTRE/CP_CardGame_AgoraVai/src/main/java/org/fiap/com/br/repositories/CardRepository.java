@@ -6,75 +6,22 @@ import org.fiap.com.br.entities.Card;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 public class CardRepository {
     public static final String TB_NAME = "CP_CARD";
 
     OracleDbConfiguration oracleDbConfiguration = new OracleDbConfiguration();
 
-    static {
-        new CardRepository().Initialize();
-    }
 
-    public CardRepository() {
-      super();
-}
-
-
-
-    public void Initialize() {
-        try {
-            // Cria um ScriptRunner, que irá executar o seu script SQL
-            try (var conn = oracleDbConfiguration.getConnection()) {
-                try(var stmt = conn.prepareStatement("DECLARE\n" +
-                        "    v_count NUMBER;\n" +
-                        "BEGIN\n" +
-                        "    SELECT COUNT(*)\n" +
-                        "    INTO v_count\n" +
-                        "    FROM USER_TABLES\n" +
-                        "    WHERE TABLE_NAME = 'CP_CARD';\n" +
-                        "\n" +
-                        "    IF v_count = 1 THEN\n" +
-                        "        EXECUTE IMMEDIATE 'DROP TABLE cp_card CASCADE CONSTRAINTS';\n" +
-                        "    END IF;\n" +
-                        "END;")) {
-                    stmt.execute();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            String sql = new String(Files.readAllBytes(Paths.get("SQL/script.sql")), Charset.forName("ISO-8859-1"));
-
-            // Divide a string SQL em vários comandos
-            String[] sqlCommands = sql.split(";");
-
-            // Executa cada comando SQL individualmente
-            try (var conn = oracleDbConfiguration.getConnection(); var stmt = conn.createStatement()) {
-                for (String command : sqlCommands) {
-                    if (!command.trim().isEmpty()) {
-                        stmt.executeUpdate(command);
-                    }
-                }
-                System.out.println("Banco de dados resetado!");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-    }
 
     public void create(Card card){
         try(var conn = oracleDbConfiguration.getConnection()){
-            var stmt = conn.prepareStatement("INSERT INTO " + TB_NAME + " (COD_CARTA, NOME, VELOCIDADE, CILINDRADAS, ZEROCEM, POTENCIA, COMPRIMENTO, PESO, IS_SUPERTRUNFO) VALUES (?,?,?,?,?,?,?,?,?)");
+            var stmt = conn.prepareStatement("INSERT INTO " + TB_NAME + " (COD_CARTA, NOME, VELOCIDADE, CILINDRADAS, ZEROCEM, POTENCIA, COMPRIMENTO, PESO, IS_SUPERTRUNFO, COD_COLECAO) VALUES (?,?,?,?,?,?,?,?,?,?)");
             {
                 stmt.setString(1, card.getCod_carta());
                 stmt.setString(2, card.getNome());
@@ -85,6 +32,7 @@ public class CardRepository {
                 stmt.setDouble(7, card.getComprimento());
                 stmt.setInt(8, card.getPeso());
                 stmt.setString(9, card.isSuperTrunfo() ? "1" : "0");
+                stmt.setInt(10, card.getCod_colecao());
 
                 stmt.executeUpdate();
                 conn.close();
@@ -113,6 +61,7 @@ public class CardRepository {
                 card.setComprimento(rs.getDouble("COMPRIMENTO"));
                 card.setPeso(rs.getInt("PESO"));
                 card.setSuperTrunfo(rs.getString("IS_SUPERTRUNFO").equals("1"));
+                card.setCod_colecao(rs.getInt("COD_COLECAO"));
                 cards.add(card);
             }
             rs.close();
@@ -144,6 +93,7 @@ public class CardRepository {
         }
 
     }
+
 
     public void delete(String cod_carta) {
         try (var conn = oracleDbConfiguration.getConnection()) {

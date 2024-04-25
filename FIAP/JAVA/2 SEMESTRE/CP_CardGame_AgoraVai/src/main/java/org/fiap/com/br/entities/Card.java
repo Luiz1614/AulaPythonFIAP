@@ -1,5 +1,7 @@
 package org.fiap.com.br.entities;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public class Card {
@@ -126,5 +128,31 @@ public class Card {
                 .add("Colecao: " + cod_colecao)
                 .add("Super Trunfo: " + isSuperTrunfo)
                 .toString();
+    }
+
+    public Map<Boolean, String> validate(){
+        Map<Boolean, String> validation = new HashMap<>();
+        if (nome == null || nome.isEmpty()) {
+            validation.put(false, "Nome não pode ser vazio");
+        }
+        if (velocidade <= 0) {
+            validation.put(false, "Velocidade deve ser maior que zero");
+        }
+        if (cilindradas <= 0) {
+            validation.put(false, "Cilindradas deve ser maior que zero");
+        }
+        if (zeroCem <= 0) {
+            validation.put(false, "Zero a Cem deve ser maior que zero");
+        }
+        if (potencia <= 0) {
+            validation.put(false, "Potencia deve ser maior que zero");
+        }
+        if (comprimento <= 0) {
+            validation.put(false, "Comprimento deve ser maior que zero");
+        }
+        if (peso <= 0) {
+            validation.put(false, "Peso deve ser maior que zero");
+        }
+        return validation;
     }
 }

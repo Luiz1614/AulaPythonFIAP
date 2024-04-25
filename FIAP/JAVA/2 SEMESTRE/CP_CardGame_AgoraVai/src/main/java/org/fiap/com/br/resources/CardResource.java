@@ -23,7 +23,7 @@ public class CardResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response Create(Card card) {
         cardRepository.create(card);
-        return Response.status(Response.Status.CREATED).build();
+        return Response.status(Response.Status.CREATED).entity(card).build();
     }
 
     @PUT

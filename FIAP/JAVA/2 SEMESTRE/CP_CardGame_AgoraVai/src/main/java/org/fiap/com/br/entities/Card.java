@@ -114,6 +114,8 @@ public class Card {
 
 
 
+
+
     @Override
     public String toString() {
         return new StringJoiner(", ", "\r\n" + Card.class.getSimpleName() + "[", "]")
@@ -133,25 +135,25 @@ public class Card {
     public Map<Boolean, String> validate(){
         Map<Boolean, String> validation = new HashMap<>();
         if (nome == null || nome.isEmpty()) {
-            validation.put(false, "Nome não pode ser vazio");
+            validation.put(false, "O campo Nome não pode ser vazio");
         }
         if (velocidade <= 0) {
-            validation.put(false, "Velocidade deve ser maior que zero");
+            validation.put(false, "O campo Velocidade deve ser maior que zero");
         }
         if (cilindradas <= 0) {
-            validation.put(false, "Cilindradas deve ser maior que zero");
+            validation.put(false, "O campo Cilindradas deve ser maior que zero");
         }
         if (zeroCem <= 0) {
-            validation.put(false, "Zero a Cem deve ser maior que zero");
+            validation.put(false, "O campo Zero a Cem deve ser maior que zero");
         }
         if (potencia <= 0) {
-            validation.put(false, "Potencia deve ser maior que zero");
+            validation.put(false, "O campo Potencia deve ser maior que zero");
         }
         if (comprimento <= 0) {
-            validation.put(false, "Comprimento deve ser maior que zero");
+            validation.put(false, "O campo Comprimento deve ser maior que zero");
         }
         if (peso <= 0) {
-            validation.put(false, "Peso deve ser maior que zero");
+            validation.put(false, "O campo Peso deve ser maior que zero");
         }
         return validation;
     }

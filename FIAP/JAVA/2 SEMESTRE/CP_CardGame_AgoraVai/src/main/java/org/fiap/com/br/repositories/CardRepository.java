@@ -103,4 +103,17 @@ public class CardRepository {
         }
     }
 
+    public boolean VerificarApenasUmST(Card card) {
+        try (var conn = oracleDbConfiguration.getConnection()) {
+            var stmt = conn.prepareStatement("SELECT COUNT(*) FROM " + TB_NAME + " WHERE IS_SUPERTRUNFO = 1 AND COD_COLECAO = " + card.getCod_colecao());
+            var rs = stmt.executeQuery();
+            if(rs.next() && card.isSuperTrunfo() == true){
+                return rs.getInt(1) > 0;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

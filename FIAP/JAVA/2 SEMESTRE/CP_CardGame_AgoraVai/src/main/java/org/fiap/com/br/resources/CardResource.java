@@ -5,6 +5,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.fiap.com.br.entities.Card;
 import org.fiap.com.br.repositories.CardRepository;
+import org.fiap.com.br.services.CardService;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class CardResource {
 
     private CardRepository cardRepository = new CardRepository();
+    private CardService cardService = new CardService(cardRepository);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -22,8 +24,12 @@ public class CardResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response Create(Card card) {
-        cardRepository.create(card);
-        return Response.status(Response.Status.CREATED).entity(card).build();
+        try{
+            cardService.create(card);
+            return Response.status(Response.Status.CREATED).build();
+        } catch (Exception e){
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
     }
 
     @PUT

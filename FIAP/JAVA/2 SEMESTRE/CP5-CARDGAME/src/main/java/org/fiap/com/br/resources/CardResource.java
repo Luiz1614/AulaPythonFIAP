@@ -8,6 +8,7 @@ import org.fiap.com.br.repositories.CardRepository;
 import org.fiap.com.br.services.CardService;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Path("card")
 public class CardResource {
@@ -36,8 +37,13 @@ public class CardResource {
     @Path("{cod_carta}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response Update(@PathParam("cod_carta") String cod_carta, Card card) {
-        cardRepository.update(cod_carta, card);
-        return Response.status(Response.Status.NO_CONTENT).build();
+        try{
+            cardService.update(card);
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }
+        catch (Exception e){
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
     }
 
 

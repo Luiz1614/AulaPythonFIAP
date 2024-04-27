@@ -1,8 +1,6 @@
 package org.fiap.com.br.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class Colecao {
     private int cod_colecao;
@@ -54,5 +52,16 @@ public class Colecao {
                 .add("nome='" + nome + "'")
                 .add("cards=" + cards)
                 .toString();
+    }
+
+    public Map<Boolean, String> validate() {
+        Map<Boolean, String> validation = new HashMap<>();
+        if (cod_colecao <= 0) {
+            validation.put(false, "O campo Código da Coleção deve ser maior que zero");
+        }
+        if (nome == null || nome.isEmpty()) {
+            validation.put(false, "O campo Nome não pode ser vazio");
+        }
+        return validation;
     }
 }

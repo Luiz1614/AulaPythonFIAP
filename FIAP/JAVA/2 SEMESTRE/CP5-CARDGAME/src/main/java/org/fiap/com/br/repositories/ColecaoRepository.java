@@ -3,6 +3,7 @@ package org.fiap.com.br.repositories;
 import org.fiap.com.br.connection.OracleDbConfiguration;
 import org.fiap.com.br.entities.Card;
 import org.fiap.com.br.entities.Colecao;
+import org.fiap.com.br.utils.Log4jLogger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,8 +14,10 @@ public class ColecaoRepository {
     public static final String TB_NAME = "CP_COLECAO";
 
     OracleDbConfiguration oracleDbConfiguration = new OracleDbConfiguration();
+    Log4jLogger logger = new Log4jLogger();
 
     public void create(Colecao colecao) {
+        logger.logCreateCollections(colecao);
         try (var conn = oracleDbConfiguration.getConnection()) {
             var stmt = conn.prepareStatement("INSERT INTO " + TB_NAME + " (NOME) VALUES (?)");
             stmt.setString(1, colecao.getNome());
@@ -28,8 +31,9 @@ public class ColecaoRepository {
 
     public List<Colecao> read(){
         List<Colecao> colecoes = new ArrayList<>();
+        logger.logReadAllCollections(colecoes);
         try (var conn = oracleDbConfiguration.getConnection()) {
-            var stmt = conn.prepareStatement("SELECT * FROM CP_COLECAO  ORDER By COD_COLECAO");
+            var stmt = conn.prepareStatement("SELECT * FROM CP_COLECAO  ORDER BY COD_COLECAO");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Colecao colecao = new Colecao();
@@ -40,10 +44,12 @@ public class ColecaoRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.logReadAllCollections(colecoes);
         return colecoes;
     }
 
     public void update(Colecao colecao) {
+        logger.logUpdateCollectionsById(colecao);
         try (var conn = oracleDbConfiguration.getConnection()) {
             var stmt = conn.prepareStatement("UPDATE " + TB_NAME + " SET NOME = ? WHERE COD_COLECAO = ?");
             stmt.setString(1, colecao.getNome());
@@ -54,9 +60,11 @@ public class ColecaoRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.logUpdateCollectionsById(colecao);
     }
 
     public void delete(int cod_colecao) {
+        logger.logDeleteCollectionsById(cod_colecao);
         try (var conn = oracleDbConfiguration.getConnection()) {
             var stmt = conn.prepareStatement("DELETE FROM " + TB_NAME + " WHERE COD_COLECAO = ?");
             stmt.setInt(1, cod_colecao);
@@ -69,6 +77,7 @@ public class ColecaoRepository {
     }
     public List<Card> ReadCardsFromCollectioById(int cod_colecao) {
         List<Card> cards = new ArrayList<>();
+        logger.logReadCollectionsById(cod_colecao);
         try (var conn = oracleDbConfiguration.getConnection()) {
             var stmt = conn.prepareStatement("SELECT * FROM CP_CARD WHERE COD_COLECAO = "+ cod_colecao);
             ResultSet rs = stmt.executeQuery();

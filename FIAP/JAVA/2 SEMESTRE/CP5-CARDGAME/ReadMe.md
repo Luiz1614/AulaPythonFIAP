@@ -32,4 +32,4 @@ Para executar o projeto, você precisa executar o arquvo SQL que está no projet
 
 ## Link para o Live Code do projeto.
 
-[Link Live Code: ](https://www.youtube.com/watch?v=3aT3eID34Do&t=148s)
+[Link Live Code: git](https://www.youtube.com/watch?v=3aT3eID34Do&t=148s)
